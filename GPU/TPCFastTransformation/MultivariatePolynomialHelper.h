@@ -180,9 +180,6 @@ class MultivariatePolynomialHelper<0, 0, false> : public MultivariatePolynomialP
   /// \return returns the terms which are used to evaluate the polynomial
   std::vector<std::string> getTerms() const;
 
-  /// \return TLinearFitter for set polynomials
-  TLinearFitter getTLinearFitter() const;
-
   /// performs fit of input points (this function can be used for mutliple fits without creating the TLinearFitter for each fit again)
   /// \return returns parameters of the fit
   /// \param fitter fitter which is used to fit the points ()

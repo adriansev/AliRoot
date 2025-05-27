@@ -959,7 +959,11 @@ Bool_t AliAnalysisAlien::CheckFileCopy(const char *alienpath)
    }
    TString stest = "plugin_test_copy";
    TFile f(stest, "RECREATE");
+#if ROOT_VERSION_CODE < ROOT_VERSION(6,36,0)
    f.SetCompressionSettings(ROOT::CompressionSettings(ROOT::kZLIB, 1));
+#else
+   f.SetCompressionSettings(ROOT::CompressionSettings(ROOT::RCompressionSetting::EAlgorithm::kZLIB, 1));
+#endif
    // User may not have write permissions to current directory 
    if (f.IsZombie()) {
       Error("CheckFileCopy", "Cannot create local test file. Do you have write access to current directory: <%s> ?",
@@ -4075,7 +4079,11 @@ void AliAnalysisAlien::WriteAnalysisFile()
       if (fMCLoop) mgr->SetNMCevents(fNMCevents);
       TDirectory *cdir = gDirectory;
       TFile *file = TFile::Open(analysisFile, "RECREATE");
+#if ROOT_VERSION_CODE < ROOT_VERSION(6,36,0)
       file->SetCompressionSettings(ROOT::CompressionSettings(ROOT::kZLIB, 1));
+#else
+      file->SetCompressionSettings(ROOT::CompressionSettings(ROOT::RCompressionSetting::EAlgorithm::kZLIB, 1));
+#endif
       if (file) {
          // Skip task Terminate calls for the grid job (but not in test mode, where we want to check also the terminate mode
          if (!TestBit(AliAnalysisGrid::kTest)) mgr->SetSkipTerminate(kTRUE);

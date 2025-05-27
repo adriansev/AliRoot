@@ -41,19 +41,12 @@ ClassImp(AliTreePlayer)
 ClassImp(AliTreeFormulaF)
 
 
-/// Default constructor
-AliTreeFormulaF::AliTreeFormulaF() : TTreeFormula(), fTextArray(NULL), fFormatArray(NULL), fFormulaArray(NULL),fValue(""),fDebug(0) {
-}
-
 ///
 /// \param name
 /// \param formula
 /// \param tree
 AliTreeFormulaF::AliTreeFormulaF(const char *name, const char *formula, TTree *tree, Int_t debug):
-        TTreeFormula(), fTextArray(NULL), fFormatArray(NULL), fFormulaArray(NULL), fValue(""), fDebug(debug) {
-  SetName(name);
-  SetTitle(formula);
-  SetTree(tree);
+TTreeFormula(name,formula,tree), fTextArray(NULL), fFormatArray(NULL), fFormulaArray(NULL), fValue(""), fDebug(debug) {
   Compile(formula);
   SetBit(kIsCharacter);
 

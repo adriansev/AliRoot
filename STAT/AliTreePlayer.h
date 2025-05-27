@@ -73,7 +73,7 @@ class TPad;
 
 class AliTreeFormulaF : public TTreeFormula {
 public:
-  AliTreeFormulaF();
+  AliTreeFormulaF() = delete;
   ~AliTreeFormulaF();
   AliTreeFormulaF(const char *name, const char *formula, TTree *tree, Int_t debug=0);
   virtual Int_t Compile(const char *expression = "");
