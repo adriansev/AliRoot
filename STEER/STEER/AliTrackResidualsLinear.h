@@ -19,7 +19,7 @@ class AliTrackResidualsLinear : public AliTrackResiduals {
  public:
   AliTrackResidualsLinear();
   AliTrackResidualsLinear(Int_t ntracks);
-  AliTrackResidualsLinear(const AliTrackResidualsLinear &res);
+  AliTrackResidualsLinear(const AliTrackResidualsLinear &res) = delete;
   AliTrackResidualsLinear& operator= (const AliTrackResidualsLinear& res);
   virtual ~AliTrackResidualsLinear();
   Bool_t Minimize();

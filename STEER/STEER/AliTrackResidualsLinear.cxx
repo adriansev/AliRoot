@@ -71,22 +71,6 @@ AliTrackResidualsLinear::AliTrackResidualsLinear(Int_t ntracks):
 }
  
 //______________________________________________________________________________
-AliTrackResidualsLinear::AliTrackResidualsLinear(const AliTrackResidualsLinear &res):
-  AliTrackResiduals(res),
-  fFitter(new TLinearFitter(*(res.fFitter))),
-  fFraction(res.fFraction),
-  fChi2Orig(res.fChi2Orig)
-{
-  // Copy constructor
-  //..
-  for (Int_t ipar=0; ipar<6; ipar++){
-    fParams[ipar]  = res.fParams[ipar];
-  }
-  for (Int_t icov=0; icov<36; icov++){ fCovar[icov]= res.fCovar[icov];}
-  fChi2Orig = res.fChi2Orig;
-}
-
-//______________________________________________________________________________
 AliTrackResidualsLinear &AliTrackResidualsLinear::operator= (const AliTrackResidualsLinear& res)
 {
   // Assignment operator
